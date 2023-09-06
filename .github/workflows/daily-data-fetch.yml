@@ -1,0 +1,42 @@
+name: GitHubActions Job Schedule
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule: ## Schedule the job to run at 12.am daily.
+    - cron: 30 12 * * *
+
+env:
+  DATABASE: ${{ secrets.DATABASE }}
+  DB_USER: ${{ secrets.DB_USER }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run data fetching script
+        run: python task/fetch_data.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "tenzin kunsang"
+          git config --global user.email "tenkus47@gmail.com"
+          git add .
+          git commit -m "Automated data update"
+          git push
