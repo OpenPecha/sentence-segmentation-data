@@ -16,7 +16,12 @@
 </p>
 
 ---
+## Project owner(s)
 
+<!-- Link to the repo owners' github profiles -->
+
+- [@tenkus47](https://github.com/tenkus47)
+  
 ## Overview
 
 **Data Fetch and JSON Generation** is a Python script designed to fetch data from a PostgreSQL database, process it, and generate JSON files. It is a versatile tool for extracting structured data and converting it into a JSON format for further analysis or storage.
