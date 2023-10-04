@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://openpecha.org"><img src="https://avatars.githubusercontent.com/u/82142807?s=400&u=19e108a15566f3a1449bafb03b8dd706a72aebcd&v=4" alt="Lopenling Redirects" width="150"></a>
+</p>
+
 <h1 align="center">Data Fetch and JSON Generation</h1>
 
 <p align="center">A Python Script for Fetching Data from PostgreSQL and Generating JSON Files</p>
