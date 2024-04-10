@@ -4,7 +4,7 @@
 
 <h1 align="center">Data Fetch and JSON Generation</h1>
 
-<p align="center">A Python Script for Fetching Data from PostgreSQL and Generating JSON Files</p>
+<p align="center">A Python Script for Fetching Data from PostgreSQL and Generating JSON Files.</p>
 
 <p align="center">
   <a href="#overview">Overview</a> •
