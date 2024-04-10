@@ -28,25 +28,25 @@ try:
     cursor = conn.cursor()
 
     # Query to get a list of all tables in the current schema
-    cursor.execute(f'SELECT modified_text,version FROM {table_name} ORDER BY id')
+    cursor.execute(f'SELECT reviewed_text,version FROM {table_name} ORDER BY id')
     text_by_version = {}
     for row in cursor.fetchall():
-        modified_text, version = row
+        reviewed_text, version = row
         if version not in text_by_version:
                text_by_version[version] = []
           
-        if modified_text is None:
+        if reviewed_text is None:
             text_by_version[version].append(None)
         else:
             try:
                 # Parse the JSON string into a Python dictionary
-                parsed_json = json.loads(modified_text)
+                parsed_json = json.loads(reviewed_text)
                 text_by_version[version].append(parsed_json)
             except json.JSONDecodeError as e:
                 print(f"Error parsing JSON for version {version}: {e}")
 
     for version, texts in text_by_version.items():
-        json_data = {"version": version, "modified_text": texts}
+        json_data = {"version": version, "reviewed_text": texts}
         file_name = f"output/{os.path.splitext(version)[0]}.json"
 
         with open(file_name, "w",encoding='utf-8') as json_file:
